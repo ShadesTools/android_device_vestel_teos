@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := device/xiaomi/santoni
+LOCAL_PATH := device/vestel/teos
 
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
@@ -32,22 +32,10 @@ TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a53
 
 TARGET_BOARD_PLATFORM := msm8937
-TARGET_BOARD_PLATFORM_GPU := qcom-adreno505
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno308
 
 TARGET_BOARD_SUFFIX := _64
 TARGET_USES_64_BIT_BINDER := true
-
-# Kernel
-BOARD_KERNEL_BASE := 0x80000000
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 androidboot.bootdevice=7824900.sdhci earlycon=msm_hsl_uart,0x78af000
-BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
-BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
-BOARD_KERNEL_PAGESIZE :=  2048
-BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01000000 --tags_offset 0x00000100
-TARGET_KERNEL_CONFIG := santoni_defconfig
-TARGET_KERNEL_SOURCE := kernel/xiaomi/msm8937
-BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/mkbootimg.mk
-TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/kernel
 
 # ANT
 BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
@@ -85,7 +73,6 @@ AUDIO_FEATURE_ENABLED_VBAT_MONITOR := true
 AUDIO_FEATURE_ENABLED_VORBIS_OFFLOAD := true
 AUDIO_FEATURE_ENABLED_WMA_OFFLOAD  := true
 AUDIO_FEATURE_ENABLED_EXT_AMPLIFIER := false
-
 AUDIO_USE_LL_AS_PRIMARY_OUTPUT := true
 BOARD_SUPPORTS_SOUND_TRIGGER := true
 BOARD_USES_ALSA_AUDIO := true
@@ -115,7 +102,7 @@ BOARD_CHARGER_DISABLE_INIT_BLANK := true
 BOARD_USES_CYANOGEN_HARDWARE := true
 BOARD_HARDWARE_CLASS += \
     hardware/cyanogen/cmhw \
-    device/xiaomi/santoni/cmhw
+    device/vestel/teos/cmhw
 
 # CNE / DPM
 BOARD_USES_QCNE := true
@@ -146,6 +133,7 @@ USE_OPENGL_RENDERER := true
 # Filesystem
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_ANDROID_FILESYSTEM_CONFIG_H := $(LOCAL_PATH)/android_filesystem_config.h
 
 # FM
 BOARD_HAVE_QCOM_FM := true
@@ -155,13 +143,23 @@ TARGET_QCOM_NO_FM_FIRMWARE := true
 USE_DEVICE_SPECIFIC_GPS := true
 TARGET_NO_RPC := true
 
-# Filesystem
-TARGET_ANDROID_FILESYSTEM_CONFIG_H := $(LOCAL_PATH)/android_filesystem_config.h
-
-# Init
-TARGET_INIT_VENDOR_LIB := libinit_santoni
-TARGET_PLATFORM_DEVICE_BASE := /devices/soc/
-TARGET_RECOVERY_DEVICE_MODULES := libinit_santoni
+# Kernel
+BOARD_KERNEL_BASE := 0x80000000
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 androidboot.bootdevice=7824900.sdhci earlycon=msm_hsl_uart,0x78B0000
+BOARD_KERNEL_BASE := 0x80000000
+BOARD_KERNEL_PAGESIZE := 2048
+BOARD_RAMDISK_OFFSET := 0x01000000
+BOARD_KERNEL_TAGS_OFFSET := 0x00000100
+BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
+TARGET_KERNEL_ARCH := arm64
+TARGET_KERNEL_HEADER_ARCH := arm64
+TARGET_KERNEL_SOURCE := kernel/vestel/msm8920
+TARGET_KERNEL_CONFIG := teos_defconfig
+BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
+TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/Image.gz-dtb
+BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/mkbootimg.mk
+BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
+BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
 
 # Keymaster
 TARGET_PROVIDES_KEYMASTER := true
@@ -171,12 +169,11 @@ TARGET_USES_MEDIA_EXTENSIONS := true
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 67108864
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3221225472
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 25765043200 # 25765059584 - 16384
 BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
 BOARD_PERSISTIMAGE_PARTITION_SIZE := 33554432
-BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 67108864
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 4294967296
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 25555055411
 BLOCK_BASED_OTA := false
 
 # Peripheral manager
@@ -191,7 +188,6 @@ TARGET_SYSTEM_PROP := $(LOCAL_PATH)/system.prop
 # Qualcomm
 BOARD_USES_QCOM_HARDWARE := true
 BOARD_USES_QC_TIME_SERVICES := true
-TARGET_USE_SDCLANG := true
 
 # RIL
 TARGET_RIL_VARIANT := caf
@@ -203,6 +199,7 @@ TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/fstab.qcom
 USE_SENSOR_MULTI_HAL := true
 
 # SELinux
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
 
@@ -223,4 +220,4 @@ WIFI_DRIVER_MODULE_NAME := "wlan"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # Inherit from the proprietary version
--include vendor/xiaomi/santoni/BoardConfigVendor.mk
+include vendor/vestel/teos/BoardConfigVendor.mk
