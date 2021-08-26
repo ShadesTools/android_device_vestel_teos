@@ -16,4 +16,8 @@
 
 LOCAL_PATH := $(call my-dir)
 
+INCLUDE_DIR := include
+
 include $(call first-makefiles-under,$(LOCAL_PATH))
+
+DEPS := $(INCLUDE_DIR)/linux/msm_ipa.h
