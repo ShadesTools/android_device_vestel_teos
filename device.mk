@@ -224,16 +224,35 @@ PRODUCT_PACKAGES += \
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
+    init.carrier.rc \
+    init.class_main.sh \
+    init.mdm.sh \
+    init.msm.usb.configfs.rc \
+    init.qcom.class_core.sh \
+    init.qcom.early_boot.sh \
+    init.qcom.factory.rc \
     init.qcom.rc \
+    init.qcom.sensors.sh \
     init.qcom.sh \
+    init.qcom.syspart_fixup.sh \
     init.qcom.usb.rc \
     init.qcom.usb.sh \
     init.target.rc \
     ueventd.qcom.rc
 
 PRODUCT_PACKAGES += \
+    init.ath3k.bt.sh \
+    init.crda.sh \
+    init.qcom.audio.sh \
     init.qcom.bt.sh \
-    init.qcom.post_boot.sh
+    init.qcom.coex.sh \
+    init.qcom.efs.sync.sh \
+    init.qcom.fm.sh \
+    init.qcom.post_boot.sh \
+    init.qcom.sdio.sh \
+    init.qcom.uicc.sh \
+    init.qcom.wifi.sh \
+    init.qti.ims.sh
 
 # RIL
 PRODUCT_PACKAGES += \
@@ -275,3 +294,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/fstman.ini:system/etc/wifi/fstman.ini \
     $(LOCAL_PATH)/wifi/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini
+
+# Misc
+PRODUCT_PACKAGES += \
+    sensor_testing_service.sh \
+    qca6234-service.sh
