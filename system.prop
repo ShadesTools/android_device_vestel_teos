@@ -2,6 +2,9 @@
 # system.prop for teos
 #
 
+# ADB on boot
+persist.sys.usb.config=adb
+
 # Audio
 voice.playback.conc.disabled=true
 voice.record.conc.disabled=false
