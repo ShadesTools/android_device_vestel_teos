@@ -87,8 +87,6 @@ etc/ftm_test_config
 etc/ftm_test_config_wcd9335
 etc/hcidump.sh
 etc/hsic.control.bt.sh
-lib/libbthost_if.so
-lib64/libbthost_if.so
 vendor/lib/libbtnv.so
 vendor/lib64/libCommandSvc.so
 vendor/lib64/libbtnv.so
@@ -1463,16 +1461,7 @@ bin/fm_qsoc_patches
 bin/fmconfig
 bin/fmfactorytest
 bin/fmfactorytestserver
-bin/fmhal_service
 bin/ftmdaemon
-lib/fm_helium.so
-lib/libfm-hci.so
-lib/libfmjni.so
-lib/libqcomfm_jni.so
-lib64/fm_helium.so
-lib64/libfm-hci.so
-lib64/libfmjni.so
-lib64/libqcomfm_jni.so
 
 # Gatekeeper
 vendor/lib/hw/gatekeeper.msm8937.so
@@ -1549,7 +1538,6 @@ vendor/lib64/libxtwifi_ulp_adaptor.so
 
 # Graphics
 lib/egl/egl.cfg
-lib/egl/libGLES_android.so
 -vendor/lib/libsdm-disp-apis.so
 vendor/lib/egl/eglsubAndroid.so
 vendor/lib/egl/eglSubDriverAndroid.so
@@ -1585,7 +1573,6 @@ vendor/lib/librs_adreno.so
 vendor/lib/librs_adreno_sha1.so
 vendor/lib/libscale.so
 vendor/lib/libsd_sdk_display.so
-lib64/egl/libGLES_android.so
 vendor/lib64/egl/eglSubDriverAndroid.so
 vendor/lib64/egl/libEGL_adreno.so
 vendor/lib64/egl/libGLESv1_CM_adreno.so
@@ -1831,7 +1818,6 @@ etc/permissions/qcom_logkit.xml
 etc/permissions/qti-vzw-ims-internal.xml
 etc/permissions/rcs_service_aidl.xml
 etc/permissions/rcs_service_api.xml
-etc/permissions/rcscommon.xml
 
 # Postprocessing
 framework/com.qti.snapdragon.sdk.display.jar
@@ -2030,10 +2016,8 @@ bin/wlan-test.sh
 bin/WifiLogger_app
 etc/wfdconfig.xml
 etc/wfdconfigsink.xml
-lib64/libwifi-hal-qcom.so
 
 # Misc
-bin/hs20-osu-client
 bin/load_policy
 bin/mm-swvdec-test
 bin/mm-swvenc-test
@@ -2050,8 +2034,6 @@ bin/setup_fs
 bin/sns_dsps_tc0001
 bin/subsystem_ramdump
 bin/test_module_pproc
-lib/liblogwrap.so
-lib/libsparse.so
 -vendor/app/SVIService/SVIService.apk
 -vendor/app/CABLService/CABLService.apk
 -vendor/app/RIDLClient/RIDLClient.apk
@@ -2310,7 +2292,6 @@ vendor/lib64/lib_remote_simlock.so
 vendor/lib64/lib_rsu.so
 vendor/lib64/libaudioparsers.so
 vendor/lib64/libavenhancements.so
-vendor/lib64/libbt-vendor.so
 vendor/lib64/libc2d30-a3xx.so
 vendor/lib64/libc2d30-a4xx.so
 vendor/lib64/libclearsight.so
