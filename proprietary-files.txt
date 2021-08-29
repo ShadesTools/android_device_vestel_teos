@@ -1606,6 +1606,7 @@ vendor/lib64/libxtwifi_ulp_adaptor.so
 # Graphics
 lib/egl/egl.cfg
 -vendor/lib/libsdm-disp-apis.so
+-vendor/lib/libsdm-disp-vndapis.so
 vendor/lib/egl/eglsubAndroid.so
 vendor/lib/egl/eglSubDriverAndroid.so
 vendor/lib/egl/libESXEGL_adreno.so
@@ -1650,6 +1651,7 @@ vendor/lib64/egl/libq3dtools_adreno.so
 vendor/lib64/egl/libq3dtools_esx.so
 vendor/lib64/egl/libRBEGL_adreno.so
 -vendor/lib64/libsdm-disp-apis.so
+-vendor/lib64/libsdm-disp-vndapis.so
 vendor/lib64/libC2D2.so
 vendor/lib64/libCB.so
 vendor/lib64/libOpenCL.so
