@@ -2,9 +2,6 @@
 # system.prop for teos
 #
 
-# ADB on boot
-persist.sys.usb.config=adb
-
 # Audio
 voice.playback.conc.disabled=true
 voice.record.conc.disabled=false
@@ -71,7 +68,7 @@ persist.hwc.enable_vds=1
 debug.sf.hw=0
 debug.egl.hw=0
 persist.hwc.mdpcomp.enable=true
-dalvik.vm.heapsize=2g
+dalvik.vm.heapsize=768m
 debug.mdpcomp.logs=0
 dev.pm.dyn_samplingrate=1
 persist.demo.hdmirotationlock=false
