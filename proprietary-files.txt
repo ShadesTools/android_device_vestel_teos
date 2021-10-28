@@ -1699,23 +1699,6 @@ vendor/lib64/libhbtpjni.so
 # Ipacm
 bin/ipacm-diag
 
-# Kernel Modules
-lib/modules/spidev.ko
-lib/modules/ansi_cprng.ko
-lib/modules/generic_bl.ko
-lib/modules/rdbg.ko
-lib/modules/ufs_test.ko
-lib/modules/mmc_block_test.ko
-lib/modules/mmc_test.ko
-lib/modules/pronto/pronto_wlan.ko
-lib/modules/wlan.ko
-lib/modules/wil6210.ko
-lib/modules/lcd.ko
-lib/modules/backlight.ko
-lib/modules/evbug.ko
-lib/modules/test-iosched.ko
-lib/modules/br_netfilter.ko
-
 # Keystore
 vendor/lib/hw/keystore.msm8937.so
 
