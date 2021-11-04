@@ -2096,6 +2096,9 @@ vendor/lib64/libimsmedia_jni.so
 vendor/lib64/librcc.so
 vendor/lib64/libvoice-svc.so
 
+# RIDL
+vendor/bin/RIDLClient.exe
+
 # Sensors
 bin/sensors.qcom
 vendor/lib/libsensor1.so
